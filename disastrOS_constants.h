@@ -29,6 +29,10 @@
 #define DSOS_ERESOURCECLOSE -12
 #define DSOS_ERESOURCEINUSE -13
 
+
+
+
+
 // syscall numbers
 #define DSOS_MAX_SYSCALLS 32
 #define DSOS_MAX_SYSCALLS_ARGS 8
@@ -42,6 +46,8 @@
 #define DSOS_CALL_CLOSE_RESOURCE 8
 #define DSOS_CALL_DESTROY_RESOURCE 9
 #define DSOS_CALL_SHUTDOWN  10
+
+//syscall dei semafori che utilizzerò in disastrOS.c
 #define DSOS_CALL_SEMOPEN   11
 #define DSOS_CALL_SEMCLOSE  12
 #define DSOS_CALL_SEMWAIT   13
