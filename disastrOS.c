@@ -334,15 +334,15 @@ void disastrOS_printStatus(){
 //richiamo la funzione sopra definita disastrOS_syscall, la quale a sua volta chiamerà le funzioni relative al corrispettivo numero passato come argomento
 
 int disastrOS_semOpen(int semnum,int value){
-      return disastrOS_syscall(DSOS_CALL_SEMOPEN);
+      return disastrOS_syscall(DSOS_CALL_SEMOPEN, semnum, value);
 }
 int disastrOS_semClose(int fd){
-      return disastrOS_syscall(DSOS_CALL_SEMCLOSE);
+      return disastrOS_syscall(DSOS_CALL_SEMCLOSE, fd);
 }
 int disastrOS_semPost(int fd){
-      return disastrOS_syscall(DSOS_CALL_SEMPOST);
+      return disastrOS_syscall(DSOS_CALL_SEMPOST, fd);
 }
 int disastrOS_semWait(int fd){
-      return disastrOS_syscall(DSOS_CALL_SEMWAIT);
+      return disastrOS_syscall(DSOS_CALL_SEMWAIT, fd);
 }
 
