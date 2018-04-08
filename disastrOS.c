@@ -331,7 +331,7 @@ void disastrOS_printStatus(){
 
 
 //implemento le mie funzioni per gestire i semafori usando delle syscall il cui numero nella tabella delle syscall si trova in disastrOS_constants.h
-//richiamo la funzione sopra definita disastrOS_syscall, la quale a sua volta chiamerà le funzioni relative al corrispettivo numero passato come argomento
+//richiamo la funzione sopra definita disastrOS_syscall, la quale a sua volta chiamerà le funzioni relative al corrispettivo numero passato per argomento
 
 int disastrOS_semOpen(int semnum,int value){
       return disastrOS_syscall(DSOS_CALL_SEMOPEN, semnum, value);
