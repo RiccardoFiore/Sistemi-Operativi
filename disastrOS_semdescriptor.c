@@ -61,6 +61,18 @@ SemDescriptor*  SemDescriptorList_byFd(ListHead* l, int fd){
   return 0;
 }
 
+//aggiunta funzione di ricerca sem_dsc passando id del semaforo
+SemDescriptor* SemDescriptorList_byId(ListHead* l,int id){
+    ListItem* aux=l->first;
+    while(aux){
+        SemDescriptor* d=(SemDescriptor*)aux;
+	    if(id == d->semaphore->id)
+            return d;                               //se trovo già un semaforo aperto con sem->id = id, ritorno il sem_dsc di tale semaforo
+        aux=aux->next;
+    }
+    return 0;
+}
+
 SemDescriptorPtr* SemDescriptorPtr_alloc(SemDescriptor* descriptor) {
   SemDescriptorPtr* d=PoolAllocator_getBlock(&_sem_descriptor_ptr_allocator);
   if (!d)
