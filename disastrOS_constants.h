@@ -30,6 +30,13 @@
 #define DSOS_ERESOURCEINUSE -13
 
 
+//semaphore errors
+#define DSOS_ESEMNOTEXISTS -14
+#define DSOS_ESEMALLOC -15
+#define DSOS_ESEMDSCALLOC -16
+#define DSOS_ESEMDSCPTRALLOC -17
+
+
 
 
 
