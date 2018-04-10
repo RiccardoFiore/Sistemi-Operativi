@@ -5,6 +5,7 @@
 #include "disastrOS_syscalls.h"
 #include "disastrOS_semaphore.h"
 #include "disastrOS_semdescriptor.h"
+#include "disastrOS_constants.h"
 
 void internal_semClose(){
 
@@ -18,8 +19,8 @@ void internal_semClose(){
 
     //prendo il semaphore descriptor
     SemDescriptor* sem_dsc= SemDescriptorList_byFd(&running->sem_descriptors, fd);
-    if(!sem_dsc){ //check per il semafore nel processo
-        running->syscall_retvalue = -111; //non ci sono processi con id = semnum nel sistema
+    if(!sem_dsc){
+        running->syscall_retvalue = DSOS_ESEMNOTEXISTS; //non ci sono semafori con questo fd aperti nel processo
         return;
     }
 
@@ -36,7 +37,7 @@ void internal_semClose(){
         return;
     }
 
-    //elimino il puntatore a sem_dsc dalla lista del semaforo con id = sem_num
+    //elimino il puntatore a sem_dsc dalla lista del semaforo
     sem_dsc_ptr = (SemDescriptorPtr*) List_detach(&(sem->descriptors), (ListItem*) sem_dsc_ptr);
     ret = SemDescriptorPtr_free (sem_dsc_ptr);
     if(ret) {
@@ -45,7 +46,7 @@ void internal_semClose(){
     }
 
 
-    //eliminati tutti i descrittori eseguo la free di sem
+    //eliminati tutti i descrittori, eseguo la free di sem
     if((sem->descriptors).size == 0){
         sem = (Semaphore*) List_detach(&semaphores_list, (ListItem*) sem);
         ret = Semaphore_free(sem);
