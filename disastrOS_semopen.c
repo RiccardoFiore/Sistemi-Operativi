@@ -21,7 +21,7 @@ void internal_semOpen(){
     if (!sem){                                  //semaforo non trovato,significa che non è stato creato, lo faccio ora
         sem = Semaphore_alloc(sem_num, value);
         if (!sem){                              //se la creazione è fallita, setto come valore di ritorno l'errore opportuno e termino
-          running->syscall_retvalue = -33;
+          running->syscall_retvalue = DSOS_ESEMALLOC;
           return;
         }
         List_insert(&semaphores_list, semaphores_list.last, (ListItem*) sem);   //inserisco il semaforo appena creato in coda alla lista dei semafori creati
@@ -37,14 +37,14 @@ void internal_semOpen(){
 
     SemDescriptor* sem_dsc = SemDescriptor_alloc(fd, sem, running);   //creo il sem_dsc per il semaforo
     if(!sem_dsc) {
-        running->syscall_retvalue = -34;    //se la creazione è fallita, setto come valore di ritorno l'errore opportuno e termino
+        running->syscall_retvalue = DSOS_ESEMDSCALLOC;    //se la creazione è fallita, setto come valore di ritorno l'errore opportuno e termino
         return;
     }
     (running->last_sem_fd)+=1;                  //devo aggiornare il numero di sem_dsc aperti
 
     SemDescriptorPtr* sem_dsc_ptr = SemDescriptorPtr_alloc(sem_dsc);    //creo il puntatore alla entry nella lista delle risorse
     if(!sem_dsc_ptr) {
-        running->syscall_retvalue = -35;    //se la creazione è fallita, setto come valore di ritorno l'errore opportuno e termino
+        running->syscall_retvalue = DSOS_ESEMDSCPTRALLOC;    //se la creazione è fallita, setto come valore di ritorno l'errore opportuno e termino
         return;
     }
     sem_dsc->ptr = sem_dsc_ptr;
