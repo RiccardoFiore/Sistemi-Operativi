@@ -44,10 +44,10 @@ OBJS=pool_allocator.o\
 LIBS=libdisastrOS.a
 
 BINS=disastrOS_test\
-	 disastrOS_test_semOpen\
+	 disastrOS_test2\
 
 #disastros_test
-#disastros_test_semOpen
+#disastros_test2
 
 .phony: clean all
 
@@ -64,7 +64,7 @@ libdisastrOS.a: $(OBJS) $(HEADERS)
 disastrOS_test:		disastrOS_test.c $(LIBS)
 	$(CC) $(CCOPTS) -o $@ $^
 
-disastrOS_test_semOpen:		disastrOS_test_semOpen.c $(LIBS)
+disastrOS_test2:		disastrOS_test2.c $(LIBS)
 	$(CC) $(CCOPTS) -o $@ $^
 
 clean:

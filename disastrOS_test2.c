@@ -13,7 +13,6 @@ void childFunction1(void* args){
     int mode=0;
     int fd=disastrOS_openResource(disastrOS_getpid(),type,mode);
     printf("PID: %d,fd: %d\n", disastrOS_getpid(), fd);
-
     int sem_num1 = 1;
 
     int fd1 = disastrOS_semOpen(sem_num1, NUM_PROC);
@@ -33,7 +32,6 @@ void childFunction2(void* args){
     int mode=0;
     int fd=disastrOS_openResource(disastrOS_getpid(),type,mode);
     printf("PID: %d,fd: %d\n", disastrOS_getpid(), fd);
-
     int sem_num2 = 2;
 
     int fd2 = disastrOS_semOpen(sem_num2, NUM_PROC-1);
@@ -61,6 +59,7 @@ void childFunction3(void* args){
 
     disastrOS_printStatus();
     printf("***\n***\n***\n Ho finito la semPost, termino\n***\n***\n***\n");
+
     disastrOS_exit(disastrOS_getpid()+1);
 }
 
