@@ -33,11 +33,14 @@
 //semaphore errors
 #define DSOS_ESEMNOTEXISTS -14
 #define DSOS_ESEMALLOC -15
-#define DSOS_ESEMDSCALLOC -16
-#define DSOS_ESEMDSCPTRALLOC -17
+#define DSOS_ESEMNOTOPENED -16
+#define DSOS_ENOTOPENED -17
 
-
-
+//semdescriptor errors
+#define DSOS_ESEMDSCALLOC -18
+#define DSOS_ESEMDSCPTRALLOC -19
+#define DSOS_EGETSEMDSC -20
+#define DSOS_ENOTMYSEM -21
 
 
 // syscall numbers
