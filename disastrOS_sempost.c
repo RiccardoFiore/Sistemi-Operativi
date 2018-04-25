@@ -36,6 +36,15 @@ void internal_semPost(){
         List_insert(&ready_list, (ListItem*) ready_list.last, (ListItem*) pcb_head);    //...e lo inserisco in quello dei processi ready
 
         pcb_head->status = Ready;                                           //cambio lo status del processo
+
+
+        int ret = SemDescriptorPtr_free (head_wait_descriptor);             //dealloco il puntatore al descrittore del sem in attesa
+        if(ret) {
+            running->syscall_retvalue = ret;
+            return;
+        }
+
+
     }
 
     running->syscall_retvalue = 0;                      //setto il valore di ritorno a 0, tutto ok
