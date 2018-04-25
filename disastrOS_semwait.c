@@ -32,6 +32,10 @@ void internal_semWait(){
 
     if (sem -> count < 0){                                                                  //a seconda di count decido che fare: se è < 0 allora il processo deve essere messo in attesa
         SemDescriptorPtr* sem_dsc_wait_ptr = SemDescriptorPtr_alloc(sem_dsc);               //alloco un puntatore al sem_dsc per gestire l'inserimento nella lista dei processi in waiting
+        if(!sem_dsc_wait_ptr) {
+            running->syscall_retvalue = DSOS_ESEMDSCPTRALLOC;
+            return;
+        }
         List_insert(&(sem_dsc->semaphore->waiting_descriptors), sem->waiting_descriptors.last, (ListItem*) sem_dsc_wait_ptr);
         running->status = Waiting;                                                          //metto il processo in waiting e faccio partire il prossimo nella ready queue
         List_insert(&waiting_list, waiting_list.last, (ListItem*) running);

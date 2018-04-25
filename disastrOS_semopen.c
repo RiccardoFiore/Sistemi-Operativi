@@ -11,7 +11,7 @@ void internal_semOpen(){
     int sem_num = running->syscall_args[0];     //prendo gli argomenti passati alla semOpen che sono salvati nella variabile running in globals.h la quale è
     int value = running->syscall_args[1];       //un puntatore a una struct PCB che contiene un array (syscall_args) con tutti i parametri passati alla syscall
 
-    printf("Sono nella sem_open di %d\n", sem_num);
+    //printf("Sono nella sem_open di %d\n", sem_num);
 
     int fd = running->last_sem_fd;              //sempre da running prendo il descrittore dell'ultimo semaforo aperto
 
