@@ -14,10 +14,12 @@ HEADERS=disastrOS.h\
 	disastrOS_semdescriptor.h\
 	linked_list.h\
 	pool_allocator.h\
+	common.h
+
 
 OBJS=pool_allocator.o\
      linked_list.o\
-     disastrOS_timer.o\
+	 disastrOS_timer.o\
      disastrOS_pcb.o\
      disastrOS_resource.o\
      disastrOS_descriptor.o\
@@ -44,10 +46,13 @@ OBJS=pool_allocator.o\
 LIBS=libdisastrOS.a
 
 BINS=disastrOS_test\
-	 disastrOS_test2\
+	 disastrOS_test_prodcons\
+	 disastrOS_test_semWait
+
 
 #disastros_test
-#disastros_test2
+#disastrOS_test_prodcons
+#disastrOS_test_semWait
 
 .phony: clean all
 
@@ -64,7 +69,10 @@ libdisastrOS.a: $(OBJS) $(HEADERS)
 disastrOS_test:		disastrOS_test.c $(LIBS)
 	$(CC) $(CCOPTS) -o $@ $^
 
-disastrOS_test2:		disastrOS_test2.c $(LIBS)
+disastrOS_test_prodcons:		disastrOS_test_prodcons.c $(LIBS)
+	$(CC) $(CCOPTS) -o $@ $^
+
+disastrOS_test_semWait:		disastrOS_test_semWait.c $(LIBS)
 	$(CC) $(CCOPTS) -o $@ $^
 
 clean:
