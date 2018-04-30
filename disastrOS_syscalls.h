@@ -25,11 +25,11 @@ void internal_closeResource();
 
 void internal_destroyResource();
 
-void internal_semOpen();
+void internal_semOpen();            //da implementare... OK
 
-void internal_semClose();
+void internal_semClose();           //da implementare... OK
 
-void internal_semPost();
+void internal_semPost();            //da implementare... OK
 
-void internal_semWait();
+void internal_semWait();            //da implementare... OK
 

@@ -192,7 +192,7 @@ void disastrOS_start(void (*f)(void*), void* f_args, char* logfile){
   syscall_numarg[DSOS_CALL_SEMCLOSE]      = 1;
 
   syscall_vector[DSOS_CALL_SEMPOST]      = internal_semPost;
-  syscall_numarg[DSOS_CALL_SEMPOST]      = 2;
+  syscall_numarg[DSOS_CALL_SEMPOST]      = 1;                   //serve un solo parametro alla sem_post
 
   syscall_vector[DSOS_CALL_SEMWAIT]      = internal_semWait;
   syscall_numarg[DSOS_CALL_SEMWAIT]      = 1;
@@ -335,8 +335,8 @@ void disastrOS_printStatus(){
 //implemento le mie funzioni per gestire i semafori usando delle syscall il cui numero nella tabella delle syscall si trova in disastrOS_constants.h
 //richiamo la funzione sopra definita disastrOS_syscall, la quale a sua volta chiamerà le funzioni relative al corrispettivo numero passato per argomento
 
-int disastrOS_semOpen(int semnum,int value){
-      return disastrOS_syscall(DSOS_CALL_SEMOPEN, semnum, value);
+int disastrOS_semOpen(int sem_num,int value){
+      return disastrOS_syscall(DSOS_CALL_SEMOPEN, sem_num, value);
 }
 int disastrOS_semClose(int fd){
       return disastrOS_syscall(DSOS_CALL_SEMCLOSE, fd);
