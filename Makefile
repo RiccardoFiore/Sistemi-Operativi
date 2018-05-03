@@ -45,14 +45,10 @@ OBJS=pool_allocator.o\
 
 LIBS=libdisastrOS.a
 
-BINS=disastrOS_test\
-	 disastrOS_test_prodcons\
-	 disastrOS_test_semWait
+BINS=disastrOS_test_prodcons\
 
 
-#disastros_test
 #disastrOS_test_prodcons
-#disastrOS_test_semWait
 
 .phony: clean all
 
@@ -66,13 +62,7 @@ libdisastrOS.a: $(OBJS) $(HEADERS)
 	$(AR) -rcs $@ $^
 	$(RM) $(OBJS)
 
-disastrOS_test:		disastrOS_test.c $(LIBS)
-	$(CC) $(CCOPTS) -o $@ $^
-
 disastrOS_test_prodcons:		disastrOS_test_prodcons.c $(LIBS)
-	$(CC) $(CCOPTS) -o $@ $^
-
-disastrOS_test_semWait:		disastrOS_test_semWait.c $(LIBS)
 	$(CC) $(CCOPTS) -o $@ $^
 
 clean:
