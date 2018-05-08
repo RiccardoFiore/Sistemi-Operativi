@@ -175,8 +175,6 @@ void initFunction(void* args) {
         disastrOS_destroyResource(i);
     }
 
-    disastrOS_printStatus();
-
     printf("SHUTDOWN!\n");
     disastrOS_shutdown();
 }
