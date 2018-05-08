@@ -29,7 +29,7 @@ void disastrOS_spawn(void (*f)(void*), void* args );
 void disastrOS_shutdown();
 
 //syscall dei semafori
-int disastrOS_semOpen(int semnum,int value);
+int disastrOS_semOpen(int sem_num,int value);
 int disastrOS_semClose(int fd);
 int disastrOS_semPost(int fd);
 int disastrOS_semWait(int fd);
